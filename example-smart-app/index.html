@@ -80,7 +80,7 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
-          $("#nonSmartFhir").append("<iframe src=\"https://sundarbalaji93.github.io/smart-on-fhir-tutorial/example-smart-app/health.html\" width=\"200px\" height=\"200px\" ></iframe>");
+          $("#nonSmartFhir").append("<iframe src='https://sundarbalaji93.github.io/smart-on-fhir-tutorial/example-smart-app/health.html' width='200px' height='200px' ></iframe>");
           drawVisualization(p);
         },
         //Display 'Failed to call FHIR Service' if extractData failed
