@@ -12,7 +12,7 @@
     <script type="text/javascript">
       console.log(sessionStorage);
       console.log(sessionStorage.tokenResponse);
-      var response = JSON.parse(sessionStorage.getItem(tokenResponse));
+      var response = JSON.parse(sessionStorage.getItem("tokenResponse"));
       var patient = response.patient, authToken = response.access_token;
       $.ajax({
       type: "GET",
