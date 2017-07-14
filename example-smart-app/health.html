@@ -8,9 +8,21 @@
   <body>
     <img src="./src/images/batman.gif" alt="Batman">
     <p>Healthysss!</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
       console.log(sessionStorage);
       console.log(sessionStorage.tokenResponse);
+      $.ajax({
+      type: "GET",
+      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/' + sessionStorage.tokenResponse.patient,
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + sessionStorage.tokenResponse.access_token
+      },
+      success: function(data){
+         console.log(data);
+      }
+    });
     </script>
   </body>
 </html>
