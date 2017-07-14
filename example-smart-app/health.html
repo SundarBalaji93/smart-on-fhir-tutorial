@@ -12,13 +12,14 @@
     <script type="text/javascript">
       console.log(sessionStorage);
       console.log(sessionStorage.tokenResponse);
-      var token = sessionStorage.tokenResponse["id_token];
+      var response = JSON.parse(sessionStorage.getItem(tokenResponse));
+      var patient = response.patient, authToken = response.access_token;
       $.ajax({
       type: "GET",
-      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/' + token,
+      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/' + patient,
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + sessionStorage.tokenResponse.access_token
+        "Authorization": "Bearer " + authToken
       },
       success: function(data){
          console.log(data);
