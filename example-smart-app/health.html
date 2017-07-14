@@ -14,7 +14,7 @@
       console.log(sessionStorage.tokenResponse);
       $.ajax({
       type: "GET",
-      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/' + sessionStorage.tokenResponse.id_token,
+      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/' + sessionStorage.getItem("tokenResponse").id_token,
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + sessionStorage.tokenResponse.access_token
