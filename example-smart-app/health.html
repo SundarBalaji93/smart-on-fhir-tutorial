@@ -33,32 +33,43 @@
         var url = details.href;
         loginWindow.close();
         $.ajax({
-          url: 'https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token',
-          type: 'post',
-          data: {
-              'grant_type': 'authorization_code',
-              'code': url.split('code=')[1].split('&state')[0],
-              'client_id': 'ed483332-dc6e-4683-bf28-f113492c00b7',   
-              'state': 'a4c16a46-2c46-482c-8d66-4cc4a2990bda'
-          },
+          url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/metadata',
+          type: 'get',
           headers: {
-              accept: 'application/json'
+              Accept: 'application/json'
           },
           success: function (data) {
               console.info(data);
               $.ajax({
-                url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342008',
-                type: 'get',
+                url: 'https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token',
+                type: 'post',
+                data: {
+                    'grant_type': 'authorization_code',
+                    'code': url.split('code=')[1].split('&state')[0],
+                    'client_id': 'ed483332-dc6e-4683-bf28-f113492c00b7',   
+                    'state': 'a4c16a46-2c46-482c-8d66-4cc4a2990bda'
+                },
                 headers: {
-                    Accept: 'application/json+fhir',
-                    Authorization: 'Bearer ' + data["access_token"]
+                    accept: 'application/json'
                 },
                 success: function (data) {
                     console.info(data);
-                }
+                    $.ajax({
+                      url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342008',
+                      type: 'get',
+                      headers: {
+                          Accept: 'application/json+fhir',
+                          Authorization: 'Bearer ' + data["access_token"]
+                      },
+                      success: function (data) {
+                          console.info(data);
+                      }
+                    });
+                  }
               });
-            }
-          });
+          }
+        });
+        
       }
     </script>
   </body>
