@@ -31,6 +31,22 @@
       function authDetails(details) {
         console.log(details);
         loginWindow.close();
+        $.ajax({
+          url: 'https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token',
+          type: 'post',
+          data: {
+              'grant_type': 'authorization_code',
+              'code': '0c8b259b-d716-4712-ad6a-1d22d92523fa',
+              'client_id': 'ed483332-dc6e-4683-bf28-f113492c00b7',   
+              'state': 'a4c16a46-2c46-482c-8d66-4cc4a2990bda'
+          },
+          headers: {
+              accept: 'application/json'
+          },
+          success: function (data) {
+              console.info(data);
+          }
+      });
       }
     </script>
   </body>
