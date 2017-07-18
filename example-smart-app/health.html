@@ -29,7 +29,7 @@
         processOAuthMessage(oauthMessage);
       }, false);
       function authDetails(details) {
-        console.log(details);
+        console.log(details.url);
         loginWindow.close();
         $.ajax({
           url: 'https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token',
