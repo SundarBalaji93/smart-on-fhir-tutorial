@@ -89,6 +89,7 @@
           $('#errors').html('<p> Failed to call FHIR Service </p>');
         }
       );
+      window.opener.postMessage(window.location);
     </script>
   </body>
 </html>
