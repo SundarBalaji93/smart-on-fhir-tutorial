@@ -46,8 +46,19 @@
           },
           success: function (data) {
               console.info(data);
-          }
-      });
+              $.ajax({
+                url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342008',
+                type: 'get',
+                headers: {
+                    accept: 'application/json',
+                    authorization: data["access_token"]
+                },
+                success: function (data) {
+                    console.info(data);
+                }
+              });
+            }
+          });
       }
     </script>
   </body>
