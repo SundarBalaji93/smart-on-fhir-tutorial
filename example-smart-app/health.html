@@ -23,7 +23,7 @@
       params = 'width=' + width + ', height=' + height;
       params += ', top=' + top + ', left=' + left;
       params += 'titlebar=no, location=yes';
-      loginWindow = window.open("https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize", uniqueWindowId, params);
+      loginWindow = window.open("https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize?client_id=ed483332-dc6e-4683-bf28-f113492c00b7&response_type=code&redirect_uri=&scope=user%2FPatient.read%20user%2FObservation.read%20launch&launch=a17aba51-1395-48d3-b3a9-73f2baf784da&aud=https%3A%2F%2Ffhir-ehr.sandboxcerner.com%2Fdstu2%2F0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca%2F&state=a4c16a46-2c46-482c-8d66-4cc4a2990bda", uniqueWindowId, params);
     </script>
   </body>
 </html>
