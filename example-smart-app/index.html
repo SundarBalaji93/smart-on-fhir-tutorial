@@ -79,7 +79,7 @@
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
           drawVisualization(p);
-          console.log(sessionStorage.tokenResponse.patient);
+          console.log(sessionStorage.tokenResponse);
         },
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
