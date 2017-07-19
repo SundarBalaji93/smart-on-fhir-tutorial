@@ -81,7 +81,16 @@
           var jsonParse = JSON.parse, patient;
           drawVisualization(p);          
           patient = jsonParse(sessionStorage.getItem('tokenResponse')).patient;
-          console.log(patient);
+          $.ajax({
+            url: 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Binary/$autogen-ccd-if?patient=' + patient,
+            headers: {
+                'Application':'application/xml'
+            },
+            method: 'get',
+            success: function(data){
+              console.log('succes: '+data);
+            }
+          });
         },
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
