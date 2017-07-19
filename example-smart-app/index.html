@@ -78,8 +78,10 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
-          drawVisualization(p);
-          console.log(sessionStorage.tokenResponse);
+          var jsonParse = Json.parse, patient;
+          drawVisualization(p);          
+          patient = jsonParse(sessionStorage.getItem('tokenResponse')).patient;
+          console.log(patient);
         },
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
