@@ -78,7 +78,7 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
-          var jsonParse = Json.parse, patient;
+          var jsonParse = JSON.parse, patient;
           drawVisualization(p);          
           patient = jsonParse(sessionStorage.getItem('tokenResponse')).patient;
           console.log(patient);
