@@ -78,13 +78,15 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
-          var jsonParse = JSON.parse, patient;
+          var jsonParse = JSON.parse, patient, token;
           drawVisualization(p);          
           patient = jsonParse(sessionStorage.getItem('tokenResponse')).patient;
+          token = jsonParse(sessionStorage.getItem('tokenResponse'))['access_token'];
           $.ajax({
-            url: 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Binary/$autogen-ccd-if?patient=' + patient,
+            url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Binary/$autogen-ccd-if?patient=' + patient,
             headers: {
-                'Application':'application/xml'
+                'Application':'application/xml',
+                'Authorization': token,
             },
             method: 'get',
             success: function(data){
