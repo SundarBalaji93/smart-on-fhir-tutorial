@@ -86,7 +86,7 @@
           $.ajax({
             url: 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Binary/$autogen-ccd-if?patient=' + patient,
             headers: {
-                'Accept':'application/json',
+                'Accept':'application/xml',
                 'Authorization': 'Bearer ' + token,
             },
             method: 'get',
